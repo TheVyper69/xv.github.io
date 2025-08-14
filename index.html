@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Mis XV</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha512-sA+ePHb3sQnAFvVx1nRJrMEaaEkd3lHtccCdcgdR4oW+gBk7Y69qL1ZeZlPxbfcMuG6VXS/MM3lt0PCKflTi6Q=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha512-tAGcCfWxNclGd3iKL3SYmfiSzRFzb4b8B2u3/j6zjKo5XmN+L+7w3WP3Ew9zQjP0S3bsH4Eq43ZoEYF+4dUxng=="
+    crossorigin=""></script>
+
+</head>
+<!-- Fuegos artificiales -->
+<canvas id="fireworks" class="fireworks"></canvas>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#"> Marlenny </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#boda">Los XV</a></li>
+          <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#como-llegar">Cómo llegar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#registro">Registro</a></li>
+          <li class="nav-item"><a class="btn btn-outline-dark ms-lg-3" href="#rsvp">RSVP</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero d-flex align-items-center text-center text-white"
+    style="background-image:url('https://static.wixstatic.com/media/c837a6_e57945ee203d4c2282608344f313474e~mv2.png/v1/fill/w_1800,h_1000,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c837a6_e57945ee203d4c2282608344f313474e~mv2.png');">
+    <div class="container position-relative z-1">
+      <h1 class="display-4 fw-bold">¡Mis XV!</h1>
+      <p class="lead mb-4">Sábado, 27 de septiembre, 2025</p>
+      <p id="countdown" class="display-6 fw-semibold mb-4"></p>
+      <a href="#rsvp" class="btn btn-light btn-lg fw-semibold">Confirmar asistencia</a>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <main class="mt-5">
+
+    <!-- La boda -->
+    <section id="boda" class="py-5">
+      <div class="container">
+        <h2 class="section-title">Detalles de mis XV</h2>
+        <p class="mb-4">Estamos encantados de invitarlos a la celebración de mis XV. Será íntima y llena de amor.
+          Prepárate para un día de alegría y diversión.</p>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <img class="img-fluid rounded-3" src="img/1.jpeg" alt="Recepción">
+          </div>
+          <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h2 class="section-title">Ceremonia religiosa</h2>
+            <ul class="list-group list-group-flush fs-5">
+              <li class="list-group-item"><strong>Ceremonia:</strong> 01:00 pm</li>
+              <li class="list-group-item"><strong>Lugar:</strong> Iglesia St.Joseph Catholic Parish, Denver Colorado
+              </li>
+            </ul>
+            <div class="mt-4">
+              <!-- Mapa: Av. Fray Antonio Alcalde, Guadalajara -->
+              <div class="ratio ratio-16x9 rounded-3 shadow-sm">
+                <iframe src="https://maps.google.com/maps?q=39.7259013,-104.9961801&z=16&output=embed" style="border:0;"
+                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia de amor -->
+    <section id="historia" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">La historia de amor</h2>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <img class="img-fluid rounded-3"
+              src="https://static.wixstatic.com/media/c837a6_113acc6993154f429fe5e9761c1f4e1d~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_80,enc_auto/c837a6_113acc6993154f429fe5e9761c1f4e1d~mv2.jpg"
+              alt="Nuestra historia">
+          </div>
+          <div class="col-lg-8">
+            <p>Párrafo. Haz clic para editar y agregar tu propio texto. Es fácil. En este espacio puedes contar la
+              historia de su relación y permitir que los invitados sepan más sobre ustedes dos.</p>
+            <p>Este es un buen espacio para hablar sobre su historia y detalles de la boda. Usa este espacio para
+              incluir más detalles y recuerdos especiales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo llegar -->
+    <section id="como-llegar" class="py-5">
+      <div class="container">
+        <h2 class="section-title">Cómo llegar</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h4>En coche</h4>
+            <p>Párrafo. Instrucciones para llegar en coche. Incluye referencias, estacionamiento, etc.</p>
+          </div>
+          <div class="col-md-6">
+            <h4>En tren</h4>
+            <p>Párrafo. Instrucciones para llegar en tren. Estaciones cercanas, tiempos, etc.</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="#detalles" class="btn btn-outline-dark">Ver más detalles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deseamos verte -->
+    <section class="cta py-5 text-center text-white"
+      style="background-image:url('https://static.wixstatic.com/media/c837a6_22812c0856e74ef283d24c64e25a6794~mv2.jpg/v1/fill/w_1800,h_1000,al_c,q_80,enc_auto/c837a6_22812c0856e74ef283d24c64e25a6794~mv2.jpg');">
+      <div class="container position-relative z-1">
+        <h2 class="mb-3">¡Deseamos verte!</h2>
+        <p class="lead mb-4">La celebración no sería lo mismo sin ti. Haznos saber si planeas asistir.</p>
+        <a href="#rsvp" class="btn btn-light btn-lg fw-semibold">RSVP</a>
+      </div>
+      <div class="overlay"></div>
+    </section>
+
+    <!-- Registro -->
+    <section id="registro" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">Registro</h2>
+        <p class="mb-4">Párrafo. Agrega tu propio texto para explicar las opciones de regalos o contribuciones.</p>
+        <a href="https://es.wix.com/donation-link" class="btn btn-dark">Contribuciones</a>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="py-5">
+      <div class="container">
+        <h2 class="section-title">Confirma tu asistencia</h2>
+        <p class="mb-4">Por favor confirma antes del 1 de marzo e indica cualquier restricción dietética o petición
+          especial.</p>
+        <!-- Puedes integrar un servicio externo de formularios aquí -->
+        <a href="mailto:mary.aldo@example.com?subject=RSVP%20Boda" class="btn btn-outline-dark btn-lg">Enviar correo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center small">
+      <p>¿Preguntas? Llama o envía mensaje:</p>
+      <p>Mary: +52 1 33 1234 5678 &nbsp;|&nbsp; Aldo: +52 1 33 1234 5678</p>
+      <hr class="border-secondary">
+      <p class="mb-0">© 2035 Mary & Aldo. Diseño recreado desde Wix template.</p>
+    </div>
+  </footer>
+  <div id="map" class="rounded-3 shadow-sm" style="height: 350px;"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+  </script>
+  <script>
+    //fuegos artificiales
+    (function () {
+      const canvas = document.getElementById('fireworks');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      /* ----- Dimensiones retina ----- */
+      function resize() {
+        const {
+          innerWidth: w,
+          innerHeight: h
+        } = window;
+        canvas.width = w * devicePixelRatio;
+        canvas.height = h * devicePixelRatio;
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* ----- Partícula ----- */
+      class Particle {
+        constructor(x, y, angle, speed, life) {
+          this.x = x;
+          this.y = y;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.alpha = 1;
+          this.decay = life;
+          this.radius = 1 + Math.random() * 0.5; // tamaño más pequeño// tamaño aleatorio
+
+        }
+        update(dt) {
+          this.x += this.vx * dt;
+          this.y += this.vy * dt + 0.18 * dt * dt; // leve “gravedad”
+          this.alpha -= this.decay * dt;
+          return this.alpha > 0;
+        }
+        draw() {
+          ctx.globalAlpha = Math.max(this.alpha, 0);
+
+          // Degradado radial (centro blanco, dorado, transparente)
+          const g = ctx.createRadialGradient(
+            this.x, this.y, 0,
+            this.x, this.y, this.radius * 2
+          );
+          g.addColorStop(0, '#ffffff');
+          g.addColorStop(0.2, '#fff5c2');
+          g.addColorStop(0.5, '#ffd700');
+          g.addColorStop(1, 'rgba(255,215,0,0)');
+
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      /* ----- Crear explosión ----- */
+      function burst() {
+        const x = Math.random() * canvas.clientWidth;
+        const y = Math.random() * canvas.clientHeight * 0.5; // mitad superior
+        const count = 80 + Math.random() * 60; // MÁS partículas
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          particles.push(
+            new Particle(
+              x, y,
+              angle,
+              70 + Math.random() * 50, // velocidad
+              0.5 + Math.random() * 0.25 // desvanecimiento
+            )
+          );
+        }
+      }
+
+      /* ----- Bucle de animación ----- */
+      const particles = [];
+      let last = performance.now();
+
+      function animate(now) {
+        const dt = (now - last) / 1000;
+        last = now;
+
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+        // Mezcla aditiva para resaltar el brillo
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          if (!particles[i].update(dt)) particles.splice(i, 1);
+          else particles[i].draw();
+        }
+        ctx.restore();
+
+        if (running) requestAnimationFrame(animate);
+      }
+
+      /* ----- Planificador de ráfagas ----- */
+      let bursts = 0;
+      const maxBursts = 8; // MÁS ráfagas
+      const interval = 500; // 0,5 s entre ráfagas
+      let running = true;
+
+      function queueBurst() {
+        if (bursts < maxBursts) {
+          burst();
+          bursts++;
+          setTimeout(queueBurst, interval);
+        } else {
+          // apagar animación tras 10 s para liberar recursos
+          setTimeout(() => {
+            running = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }, 10000);
+        }
+      }
+
+      window.addEventListener('load', () => {
+        queueBurst();
+        requestAnimationFrame(animate);
+      });
+    })();
+    // mapa iglesia
+    const coords = [39.7259013, -104.9961801];
+
+    const map = L.map('map').setView(coords, 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker(coords).addTo(map)
+      .bindPopup('Ceremonia<br>St.&nbsp;Joseph&nbsp;Catholic&nbsp;Parish')
+      .openPopup();
+
+    // cuenta regresiva
+    const eventDate = new Date('2025-09-27T13:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+
+      const el = document.getElementById('countdown');
+
+      if (diff <= 0) {
+        el.textContent = '¡Hoy es el gran día!';
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      el.textContent =
+        `Faltan ${days} días ${hrs.toString().padStart(2,'0')}:${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    }
+
+    // Inicializa y actualiza cada segundo
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+
+</html>

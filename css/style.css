@@ -1,0 +1,71 @@
+/* Tipografía global */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Títulos de sección */
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero y CTA */
+.hero,
+.cta {
+    position: relative;
+    min-height: 80vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero .overlay,
+.cta .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero .container,
+.cta .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cuenta regresiva */
+#countdown {
+    font-size: 1.75rem;
+}
+
+/* Lista de horario sin fondo */
+.list-group-item {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+}
+
+/* Breakpoint móvil */
+@media (max-width: 767px) {
+    .hero,
+    .cta {
+        min-height: 60vh;
+    }
+    #countdown {
+        font-size: 1.25rem;
+    }
+}
+/* Canvas de fuegos artificiales */
+.fireworks {
+    position: fixed;
+    inset: 0;              /* top:0; right:0; bottom:0; left:0 */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;  /* que no bloquee clics */
+    z-index: 1060;         /* por encima de todo */
+}
