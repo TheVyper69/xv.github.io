@@ -29,6 +29,37 @@
 
 <body>
 
+  <!-- Overlay de invitación -->
+  <div id="invitation-overlay" class="invitation-overlay" aria-hidden="true">
+    <div class="invite-stage">
+      <div class="envelope" id="envelope" aria-label="Abrir invitación" role="button" tabindex="0">
+
+        <!-- BASE del sobre = bolsillo recortado -->
+        <div class="env-base">
+          <!-- La carta (con tu foto) AHORA está dentro de la BASE -->
+          <div class="letter">
+            <div class="card3d" id="photoCard" aria-live="polite">
+              <div class="face front">
+                <img src="img/2.jpeg" alt="Foto de invitación">
+              </div>
+              <div class="face back d-flex align-items-center justify-content-center">
+                <span class="text-white-50">Toca para entrar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAPA del sobre encima -->
+        <div class="env-lid"></div>
+      </div>
+
+      <small class="hint text-white-50 mt-3">Toca para abrir</small>
+    </div>
+  </div>
+
+
+
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
@@ -185,6 +216,74 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
   </script>
   <script>
+    // Overlay de invitación
+    (function () {
+      const overlay = document.getElementById('invitation-overlay');
+      const envelope = document.getElementById('envelope');
+      const card = document.getElementById('photoCard');
+
+      // Bloquear scroll mientras está el overlay
+      document.body.classList.add('locked');
+
+      // Pasos:
+      // 0 = sobre cerrado (fondo negro)
+      // 1 = tapa abierta + carta sale del sobre (foto al frente)
+      // 2 = tarjeta se voltea y pasa a "pantalla completa"; el overlay se vuelve transparente para ver el sitio detrás
+      // 3 = se oculta el overlay
+      let step = 0;
+
+      function openEnvelope() {
+        envelope.classList.add('open');
+        step = 1;
+      }
+
+      function flipAndFullscreen() {
+        card.classList.add('flipped');
+        // Pequeñísima pausa para que se note el flip y luego expandimos a fullscreen
+        setTimeout(() => {
+          card.classList.add('fullscreen');
+          overlay.classList.add('fade'); // el fondo negro se vuelve transparente
+          document.body.classList.remove('locked'); // ya se puede ver y hacer scroll del sitio
+        }, 120);
+        step = 2;
+      }
+
+      function hideOverlay() {
+        overlay.classList.add('hide');
+        // Limpieza final
+        setTimeout(() => {
+          overlay.remove();
+        }, 500);
+        step = 3;
+      }
+
+      // Click global en overlay: avanzar pasos
+      overlay.addEventListener('click', () => {
+        if (step === 0) openEnvelope();
+        else if (step === 1) flipAndFullscreen();
+        else if (step === 2) hideOverlay();
+      });
+
+      // Soporte teclado (Enter/Espacio)
+      envelope.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (step === 0) openEnvelope();
+          else if (step === 1) flipAndFullscreen();
+        }
+      });
+    })();
+    (function () {
+      const envelope = document.getElementById('envelope');
+      const lid = envelope.querySelector('.env-lid');
+
+      // lid.addEventListener('transitionend', (e) => {
+      //   if (e.propertyName === 'transform' && envelope.classList.contains('open')) {
+      //     envelope.classList.add('lid-up'); // ahora la carta queda por encima
+      //   }
+      // });
+    })();
+
     //fuegos artificiales
     (function () {
       const canvas = document.getElementById('fireworks');
