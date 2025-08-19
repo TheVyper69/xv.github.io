@@ -258,12 +258,45 @@
 
 
     <!-- Deseamos verte -->
-    <section class="cta py-5 text-center text-white"
-      style="background-image:url('img/4.jpeg');">
+    <section class="cta py-5 text-center text-white" style="background-image:url('img/4.jpeg');">
       <div class="container position-relative z-1">
-        <h2 class="mb-3">¡Deseamos verte!</h2>
-        <p class="lead mb-4">La celebración no sería lo mismo sin ti. Haznos saber si planeas asistir.</p>
-        <a href="#rsvp" class="btn btn-light btn-lg fw-semibold">RSVP</a>
+        <!-- RSVP -->
+        <section id="rsvp" class="py-5">
+          <div class="container text-center">
+            <h2 class="section-title">Confirma tu asistencia</h2>
+            <p class="mb-4">
+              Por favor confirma antes del 1 de marzo e indica cualquier restricción dietética o petición especial.
+            </p>
+
+            <!-- Botones para guardar en el calendario -->
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <!-- Android / Google Calendar -->
+              <a class="btn btn-dark btn-lg" onclick="addToGoogleCal(
+           'Evento — Ceremonia y Recepción',
+           '2025-09-27T13:00',  /* inicio local Denver */
+           '2025-09-28T00:30',  /* fin local Denver (12:30 am) */
+           'Ceremonia: St. Joseph Catholic Parish, 600 Galapagos St, Denver, CO 80204. Recepción: Lupita’s Event Center, 2465 W Evans Ave, Denver, CO 80219.',
+           'America/Denver'
+         )">
+                Guardar en Google Calendar (Android)
+              </a>
+
+              <!-- iOS / archivo .ics -->
+              <a class="btn btn-dark btn-lg" onclick="downloadICS(
+           'Evento — Ceremonia y Recepción',
+           '2025-09-27T13:00',
+           '2025-09-28T00:30',
+           'Ceremonia: St. Joseph Catholic Parish, 600 Galapagos St, Denver, CO 80204. Recepción: Lupita’s Event Center, 2465 W Evans Ave, Denver, CO 80219.',
+           'America/Denver'
+         )">
+                Guardar en Apple Calendar (.ics)
+              </a>
+            </div>
+
+            <!-- (opcional) tu botón de email original como respaldo -->
+            
+          </div>
+        </section>
       </div>
       <div class="overlay"></div>
     </section>
@@ -277,16 +310,8 @@
       </div>
     </section>
 
-    <!-- RSVP -->
-    <section id="rsvp" class="py-5">
-      <div class="container">
-        <h2 class="section-title">Confirma tu asistencia</h2>
-        <p class="mb-4">Por favor confirma antes del 1 de marzo e indica cualquier restricción dietética o petición
-          especial.</p>
-        <!-- Puedes integrar un servicio externo de formularios aquí -->
-        <a href="mailto:mary.aldo@example.com?subject=RSVP%20Boda" class="btn btn-outline-dark btn-lg">Enviar correo</a>
-      </div>
-    </section>
+
+
 
   </main>
 
@@ -307,6 +332,59 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
   </script>
   <script>
+    //reserva de calendario
+    // Convierte 'YYYY-MM-DDTHH:mm' → 'YYYYMMDDTHHmm00' (formato que usa Google con &ctz)
+    function toGoogleTime(localIso) {
+      return localIso.replace(/[-:]/g, '') + '00';
+    }
+
+    // Abre Google Calendar con el evento precargado
+    function addToGoogleCal(title, startLocal, endLocal, location, tz) {
+      const base = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+      const text = encodeURIComponent(title);
+      const dates = `${toGoogleTime(startLocal)}/${toGoogleTime(endLocal)}`;
+      const details = encodeURIComponent('Detalles del evento:\n' + location);
+      const loc = encodeURIComponent(location);
+      const url =
+      `${base}&text=${text}&dates=${dates}&details=${details}&location=${loc}&ctz=${encodeURIComponent(tz)}`;
+      window.open(url, '_blank', 'noopener');
+    }
+
+    // Genera y descarga un .ics (Apple/Outlook)
+    function downloadICS(title, startLocal, endLocal, location, tzid) {
+      const toICS = (s) => s.replace(/[-:]/g, '') + '00'; // YYYYMMDDTHHmm00
+      const dtstamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const uid = `${Date.now()}-${Math.random().toString(36).slice(2)}@invitacion`;
+
+      const ics =
+        `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitacion//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtstamp}
+DTSTART;TZID=${tzid}:${toICS(startLocal)}
+DTEND;TZID=${tzid}:${toICS(endLocal)}
+SUMMARY:${title}
+LOCATION:${location}
+DESCRIPTION:${location}
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], {
+        type: 'text/calendar;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${title.replace(/[\\s:]+/g,'_')}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
     // Overlay de invitación
     (function () {
       const overlay = document.getElementById('invitation-overlay');
