@@ -14,14 +14,13 @@
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha512-sA+ePHb3sQnAFvVx1nRJrMEaaEkd3lHtccCdcgdR4oW+gBk7Y69qL1ZeZlPxbfcMuG6VXS/MM3lt0PCKflTi6Q=="
-    crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha512-tAGcCfWxNclGd3iKL3SYmfiSzRFzb4b8B2u3/j6zjKo5XmN+L+7w3WP3Ew9zQjP0S3bsH4Eq43ZoEYF+4dUxng=="
     crossorigin=""></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 
 </head>
 <!-- Fuegos artificiales -->
@@ -72,9 +71,8 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="#boda">Los XV</a></li>
           <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
-          <li class="nav-item"><a class="nav-link" href="#como-llegar">Cómo llegar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gracias-a">Gracias a</a></li>
           <li class="nav-item"><a class="nav-link" href="#registro">Registro</a></li>
-          <li class="nav-item"><a class="btn btn-outline-dark ms-lg-3" href="#rsvp">RSVP</a></li>
         </ul>
       </div>
     </div>
@@ -113,12 +111,18 @@
               </li>
             </ul>
             <div class="mt-4">
-              <!-- Mapa: Av. Fray Antonio Alcalde, Guadalajara -->
+              <!-- Mapa: Av. Fray Antonio Alcalde, Guadalajara -->
               <div class="ratio ratio-16x9 rounded-3 shadow-sm">
                 <iframe src="https://maps.google.com/maps?q=39.7259013,-104.9961801&z=16&output=embed" style="border:0;"
-                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
 
+              <!-- Botón directo a Google Maps -->
+              <a href="https://www.google.com/maps/place/@39.7259013,-104.9961801,16z" target="_blank" rel="noopener"
+                class="btn btn-outline-dark mt-3">
+                Ver en Google Maps
+              </a>
             </div>
           </div>
         </div>
@@ -128,48 +132,134 @@
     <!-- Historia de amor -->
     <section id="historia" class="py-5 bg-light">
       <div class="container">
-        <h2 class="section-title">La historia de amor</h2>
+        <h2 class="section-title">XV PRIMAVERAS</h2>
         <div class="row g-4">
-          <div class="col-lg-4">
-            <img class="img-fluid rounded-3"
-              src="https://static.wixstatic.com/media/c837a6_113acc6993154f429fe5e9761c1f4e1d~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_80,enc_auto/c837a6_113acc6993154f429fe5e9761c1f4e1d~mv2.jpg"
-              alt="Nuestra historia">
+          <div class="col-lg-5">
+            <img class="img-fluid rounded-3" src="img/3.jpeg">
           </div>
-          <div class="col-lg-8">
-            <p>Párrafo. Haz clic para editar y agregar tu propio texto. Es fácil. En este espacio puedes contar la
-              historia de su relación y permitir que los invitados sepan más sobre ustedes dos.</p>
-            <p>Este es un buen espacio para hablar sobre su historia y detalles de la boda. Usa este espacio para
-              incluir más detalles y recuerdos especiales.</p>
+          <div class="col-md-7">
+            <p>Mi vida ha sido un libro lleno de aventuras, risas y sueños. Hoy, me encuentro en el umbral de un nuevo
+              capítulo, uno que me llena de emoción y alegría. Es el momento de dejar de ser una niña para convertirme
+              en una mujer, y me gustaría que formaras parte de esta historia.</p>
+            <p>
+              Te invito a celebrar mis quince años. Quiero compartir contigo la magia de este momento, lleno de música,
+              baile y sorpresas que hemos preparado con mucho cariño. Tu presencia es el mejor regalo, y me haría
+              inmensamente feliz que me acompañes en esta noche tan especial.
+            </p>
+
+            <p> Espero verte para crear juntos un recuerdo inolvidable que guardaré en mi corazón por siempre.</p>
+
+
+            <section id="mapa-lupitas" class="py-5">
+              <div class="container">
+                <h2 class="section-title">Ubicación: Lupita's Event Center</h2>
+
+                <!-- Mapa más pequeño (centrado) -->
+                <div class="mx-auto" style="max-width:600px;">
+                  <div class="ratio ratio-16x9 rounded-3 shadow-sm">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.622057999186!2d-105.016314!3d39.6786616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7f5a136a2f03%3A0x167e78d5fd7d5029!2sLupita's%20Event%20Center!5e0!3m2!1ses!2sus!4v1723717200000!5m2!1ses!2sus"
+                      style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                  </div>
+                </div>
+
+                <!-- Botón directo a Google Maps -->
+                <a href="https://www.google.com/maps/place/Lupita's+Event+Center/@39.6786616,-105.016314,292m/data=!3m1!1e3!4m6!3m5!1s0x876c7f5a136a2f03:0x167e78d5fd7d5029!8m2!3d39.6791995!4d-105.0165213!16s%2Fg%2F1tfzh7tr?entry=ttu"
+                  target="_blank" rel="noopener" class="btn btn-outline-dark mt-3">
+                  Ver en Google Maps
+                </a>
+              </div>
+            </section>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Cómo llegar -->
-    <section id="como-llegar" class="py-5">
+    <!-- gracias-a -->
+    <section id="gracias-a" class="py-5">
       <div class="container">
-        <h2 class="section-title">Cómo llegar</h2>
+
 
         <div class="row g-4">
-          <div class="col-md-6">
-            <h4>En coche</h4>
-            <p>Párrafo. Instrucciones para llegar en coche. Incluye referencias, estacionamiento, etc.</p>
-          </div>
-          <div class="col-md-6">
-            <h4>En tren</h4>
-            <p>Párrafo. Instrucciones para llegar en tren. Estaciones cercanas, tiempos, etc.</p>
+          <div class="mt-5 text-center">
+            <h3 class="section-title mb-4">Con cariño de</h3>
+            <ul class="list-group list-group-flush fs-5 d-inline-block text-start">
+              <li class="list-group-item">
+                <strong>Padres:</strong> Sr. Baltazar Morales y Sra. Sandra Manzo
+              </li>
+              <li class="list-group-item">
+                <strong>Padrinos:</strong> Sr. Andrés Venancio y Sra. Delmi Morales
+              </li>
+              <li class="list-group-item">
+                <strong>Chambelán principal:</strong> Brandon Morales Masnzo
+              </li>
+            </ul>
           </div>
         </div>
+        <!-- Bloque agregado -->
+      </div>
+    </section>
+    <section id="programa" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Programa del evento</h2>
 
-        <div class="text-center mt-4">
-          <a href="#detalles" class="btn btn-outline-dark">Ver más detalles</a>
+        <div class="timeline">
+          <!-- Evento 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>Ceremonia Religiosa – 1:00 pm</h5>
+              <p>Iglesia St. Joseph Catholic Parish<br>
+                Dirección: 600 Galapagos St, Denver, CO 80204</p>
+            </div>
+          </div>
+
+          <!-- Evento 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>Recepción – 5:00 pm</h5>
+              <p>Lupita’s Event Center<br>
+                Dirección: 2465 W Evans Ave, Denver, CO 80219</p>
+            </div>
+          </div>
+
+          <!-- Evento 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>Comida – 5:00 pm a 8:00 pm</h5>
+              <p>Durante la recepción</p>
+            </div>
+          </div>
+
+          <!-- Evento 4 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>Entrada principal – 6:00 pm</h5>
+              <p>Ingreso de los festejados</p>
+            </div>
+          </div>
+
+          <!-- Evento 5 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>Baile – 8:00 pm a 12:30 am</h5>
+              <p>Baile y celebración</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
 
     <!-- Deseamos verte -->
     <section class="cta py-5 text-center text-white"
-      style="background-image:url('https://static.wixstatic.com/media/c837a6_22812c0856e74ef283d24c64e25a6794~mv2.jpg/v1/fill/w_1800,h_1000,al_c,q_80,enc_auto/c837a6_22812c0856e74ef283d24c64e25a6794~mv2.jpg');">
+      style="background-image:url('img/4.jpeg');">
       <div class="container position-relative z-1">
         <h2 class="mb-3">¡Deseamos verte!</h2>
         <p class="lead mb-4">La celebración no sería lo mismo sin ti. Haznos saber si planeas asistir.</p>
@@ -209,11 +299,12 @@
       <p class="mb-0">© 2035 Mary & Aldo. Diseño recreado desde Wix template.</p>
     </div>
   </footer>
-  <div id="map" class="rounded-3 shadow-sm" style="height: 350px;"></div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
   </script>
   <script>
     // Overlay de invitación
@@ -410,12 +501,14 @@
     // mapa iglesia
     const coords = [39.7259013, -104.9961801];
 
-    const map = L.map('map').setView(coords, 16);
+    const map = L.map('map').setView([39.7259, -104.9962], 15);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
-    L.marker(coords).addTo(map)
-      .bindPopup('Ceremonia<br>St.&nbsp;Joseph&nbsp;Catholic&nbsp;Parish')
+
+    L.marker([39.7259, -104.9962]).addTo(map)
+      .bindPopup('St. Joseph Catholic Parish')
       .openPopup();
 
     // cuenta regresiva
