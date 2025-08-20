@@ -295,3 +295,87 @@ body.locked {
   font-size: 0.95rem;
   color: #555;
 }
+body.content-hidden > :not(#invitation-overlay):not(header.hero) {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(6px);
+  transition: opacity .6s ease .12s, filter .6s ease .12s, transform .6s ease .12s;
+}
+/* Cuando se revele, todo vuelve a la normalidad */
+body.content-visible > :not(#invitation-overlay) {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+/* ===== Countdown estilo tarjetas ===== */
+#countdown{
+  display:flex; gap:1.1rem; justify-content:center; align-items:flex-start;
+  margin-bottom:1.25rem;
+}
+#countdown .cd-tile{
+  display:flex; flex-direction:column; align-items:center; min-width:110px;
+}
+
+/* Tarjeta */
+#countdown .cd-card{
+  position:relative;
+  width:100%; height:120px; border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.08) 100%);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  backdrop-filter: blur(4px);
+  display:grid; place-items:center;
+}
+
+/* División a la mitad (flip look) */
+#countdown .cd-card::before{
+  content:""; position:absolute; left:0; right:0; top:50%;
+  height:1px; transform:translateY(-.5px);
+  background: linear-gradient(90deg, rgba(255,255,255,.0), rgba(255,255,255,.7), rgba(255,255,255,.0));
+}
+#countdown .cd-card::after{
+  content:""; position:absolute; inset:0; border-radius:14px;
+  box-shadow: inset 0 60px 60px rgba(255,255,255,.06), inset 0 -60px 60px rgba(0,0,0,.15);
+  pointer-events:none;
+}
+
+/* Bisagras laterales */
+#countdown .cd-card > i,
+#countdown .cd-card > b{ display:none; }
+
+/* Número grande */
+#countdown .cd-num{
+  font-family: "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 64px; line-height: 1; color:#fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+
+/* Animación sutil cuando cambia */
+@keyframes cd-bounce {
+  0% { transform: translateY(-2px) scale(1.02); opacity:.85; }
+  100%{ transform: none; opacity:1; }
+}
+#countdown .cd-num.cd-tick{ animation: cd-bounce .22s ease; }
+
+/* Etiqueta */
+#countdown .cd-label{
+  margin-top:.6rem; letter-spacing: .2em; font-size:.85rem;
+  color: rgba(255,255,255,.8); text-transform:uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  #countdown{ gap:.6rem; }
+  #countdown .cd-tile{ min-width:82px; }
+  #countdown .cd-card{ height:92px; }
+  #countdown .cd-num{ font-size:46px; }
+  #countdown .cd-label{ font-size:.75rem; }
+}
+@media (max-width: 480px){
+  #countdown{ gap:.5rem; }
+  #countdown .cd-tile{ min-width:70px; }
+  #countdown .cd-card{ height:80px; }
+  #countdown .cd-num{ font-size:38px; }
+}
+
+
+

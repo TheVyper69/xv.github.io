@@ -599,46 +599,77 @@ END:VCALENDAR`;
         requestAnimationFrame(animate);
       });
     })();
-    // mapa iglesia
-    const coords = [39.7259013, -104.9961801];
+    // // mapa iglesia
+    // const coords = [39.7259013, -104.9961801];
 
-    const map = L.map('map').setView([39.7259, -104.9962], 15);
+    // const map = L.map('map').setView([39.7259, -104.9962], 15);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   attribution: '&copy; OpenStreetMap contributors'
+    // }).addTo(map);
 
-    L.marker([39.7259, -104.9962]).addTo(map)
-      .bindPopup('St. Joseph Catholic Parish')
-      .openPopup();
+    // L.marker([39.7259, -104.9962]).addTo(map)
+    //   .bindPopup('St. Joseph Catholic Parish')
+    //   .openPopup();
 
     // cuenta regresiva
-    const eventDate = new Date('2025-09-27T13:00:00');
+   document.addEventListener('DOMContentLoaded', () => {
+  const host = document.getElementById('countdown');
+  if (!host) return;
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = eventDate - now;
+  // Construye las tarjetas dentro del #countdown
+  const parts = [
+    { key:'days',    label:'DAYS'    },
+    { key:'hours',   label:'HOURS'   },
+    { key:'minutes', label:'MINUTES' },
+    { key:'seconds', label:'SECONDS' }
+  ];
+  host.innerHTML = parts.map(p => `
+    <div class="cd-tile" aria-live="polite">
+      <div class="cd-card">
+        <span class="cd-num" data-part="${p.key}">00</span>
+      </div>
+      <span class="cd-label">${p.label}</span>
+    </div>
+  `).join('');
 
-      const el = document.getElementById('countdown');
+  const target = new Date('2025-09-27T13:00:00-06:00').getTime(); // Denver, 1:00 pm
+  const pad2 = n => String(Math.max(0, n)).padStart(2,'0');
 
-      if (diff <= 0) {
-        el.textContent = '¡Hoy es el gran día!';
-        clearInterval(timer);
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
-
-      el.textContent =
-        `Faltan ${days} días ${hrs.toString().padStart(2,'0')}:${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+  function setNum(part, val){
+    const el = host.querySelector(`.cd-num[data-part="${part}"]`);
+    if (!el) return;
+    const newVal = pad2(val);
+    if (el.textContent !== newVal) {
+      el.textContent = newVal;
+      el.classList.remove('cd-tick');
+      // fuerza reflow para reiniciar animación
+      void el.offsetWidth;
+      el.classList.add('cd-tick');
     }
+  }
 
-    // Inicializa y actualiza cada segundo
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
+  function tick(){
+    let diff = target - Date.now();
+    if (diff <= 0){
+      setNum('days',0); setNum('hours',0); setNum('minutes',0); setNum('seconds',0);
+      host.setAttribute('data-done','true');
+      return clearInterval(tmr);
+    }
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000);  diff -= h*3600000;
+    const m = Math.floor(diff/60000);    diff -= m*60000;
+    const s = Math.floor(diff/1000);
+
+    setNum('days', d);
+    setNum('hours', h);
+    setNum('minutes', m);
+    setNum('seconds', s);
+  }
+
+  tick();
+  const tmr = setInterval(tick, 1000);
+});
   </script>
 
 </body>
