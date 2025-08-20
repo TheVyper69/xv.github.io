@@ -17,6 +17,13 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha512-tAGcCfWxNclGd3iKL3SYmfiSzRFzb4b8B2u3/j6zjKo5XmN+L+7w3WP3Ew9zQjP0S3bsH4Eq43ZoEYF+4dUxng=="
     crossorigin=""></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cambia las familias por las que uses -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -193,7 +200,7 @@
                 <strong>Padrinos:</strong> Sr. Andrés Venancio y Sra. Delmi Morales
               </li>
               <li class="list-group-item">
-                <strong>Chambelán principal:</strong> Brandon Morales Masnzo
+                <strong>Chambelán principal:</strong> Brandon Morales Manzo
               </li>
             </ul>
           </div>
@@ -265,7 +272,8 @@
           <div class="container text-center">
             <h2 class="section-title">Confirma tu asistencia</h2>
             <p class="mb-4">
-              Por favor confirma antes del 1 de marzo e indica cualquier restricción dietética o petición especial.
+              Por favor confirma antes del 27 de septiembre e indica cualquier restricción dietética o petición
+              especial.
             </p>
 
             <!-- Botones para guardar en el calendario -->
@@ -294,7 +302,7 @@
             </div>
 
             <!-- (opcional) tu botón de email original como respaldo -->
-            
+
           </div>
         </section>
       </div>
@@ -302,11 +310,20 @@
     </section>
 
     <!-- Registro -->
-    <section id="registro" class="py-5 bg-light">
+    <section id="rsvp-form" class="py-5 bg-light">
       <div class="container">
-        <h2 class="section-title">Registro</h2>
-        <p class="mb-4">Párrafo. Agrega tu propio texto para explicar las opciones de regalos o contribuciones.</p>
-        <a href="https://es.wix.com/donation-link" class="btn btn-dark">Contribuciones</a>
+        <h2 class="section-title text-center mb-4">Confirmación de asistencia</h2>
+
+        <div class="ratio ratio-4x3 rounded-3 shadow-sm">
+          <!-- Reemplaza el src por el de TU formulario -->
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSekhLWDwoH0YEyXTawd-HxfUOyAgwFqy11V4V4gblUBjmEUuA/viewform?embedded=true"
+            width="640" height="906" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </div>
+
+        <p class="text-center text-muted mt-3 small">
+          Tus respuestas quedarán registradas y recibirás confirmación por correo.
+        </p>
       </div>
     </section>
 
@@ -318,12 +335,13 @@
   <!-- Footer -->
   <footer class="bg-dark text-white py-4">
     <div class="container text-center small">
-      <p>¿Preguntas? Llama o envía mensaje:</p>
-      <p>Mary: +52 1 33 1234 5678 &nbsp;|&nbsp; Aldo: +52 1 33 1234 5678</p>
+      <p>¿Preguntas? Mi número es:</p>
+      <p>Sandra: +1 (303) 564-3172 </p>
       <hr class="border-secondary">
-      <p class="mb-0">© 2035 Mary & Aldo. Diseño recreado desde Wix template.</p>
+      <p class="mb-0">© 2025 WILLIAN.</p>
     </div>
   </footer>
+  <audio id="bg-music" src="mp3/Iframe Selena - Dreaming Of You (Audio) [jBdkstyfvHg].mp3"></audio>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -346,7 +364,7 @@
       const details = encodeURIComponent('Detalles del evento:\n' + location);
       const loc = encodeURIComponent(location);
       const url =
-      `${base}&text=${text}&dates=${dates}&details=${details}&location=${loc}&ctz=${encodeURIComponent(tz)}`;
+        `${base}&text=${text}&dates=${dates}&details=${details}&location=${loc}&ctz=${encodeURIComponent(tz)}`;
       window.open(url, '_blank', 'noopener');
     }
 
@@ -390,6 +408,7 @@ END:VCALENDAR`;
       const overlay = document.getElementById('invitation-overlay');
       const envelope = document.getElementById('envelope');
       const card = document.getElementById('photoCard');
+      const music = document.getElementById('bg-music');
 
       // Bloquear scroll mientras está el overlay
       document.body.classList.add('locked');
@@ -409,10 +428,14 @@ END:VCALENDAR`;
       function flipAndFullscreen() {
         card.classList.add('flipped');
         // Pequeñísima pausa para que se note el flip y luego expandimos a fullscreen
+
+
         setTimeout(() => {
           card.classList.add('fullscreen');
           overlay.classList.add('fade'); // el fondo negro se vuelve transparente
-          document.body.classList.remove('locked'); // ya se puede ver y hacer scroll del sitio
+          document.body.classList.remove('locked');
+          music.play().catch(err => console.log('Autoplay bloqueado hasta interacción:',
+          err)); // ya se puede ver y hacer scroll del sitio
         }, 120);
         step = 2;
       }
@@ -617,6 +640,7 @@ END:VCALENDAR`;
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
   </script>
+
 </body>
 
 </html>
